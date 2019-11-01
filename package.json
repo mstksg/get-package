@@ -1,0 +1,26 @@
+{
+  "name": "get-package",
+  "version": "1.0.0",
+  "description": "github action for setting up package from OS package managers",
+  "dependencies": {
+    "@actions/core": "> 1",
+    "@actions/github": "> 1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/mstksg/get-package.git"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "aptitude",
+    "apt-get",
+    "brew"
+  ],
+  "author": "jle",
+  "license": "ISC"
+}
