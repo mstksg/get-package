@@ -2,36 +2,30 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const child_process = require('child_process');
 const fs = require('fs');
+const commandExists = require('command-exists');
+
+const managers = {
+  "apt-get": {
+      "check": "apt-get",
+      "command": "sudo apt-get install"
+    },
+  "brew": {
+      "check": "brew",
+      "command": "brew update && brew install"
+    }
+};
 
 try {
-  ro = core.getInput('runs-on').split("-")[0];
+
   var pkgs;
-  var mgr;
-  var installcmd;
 
-  switch(ro) {
-
-    case "ubuntu":
-      pkgs       = core.getInput('aptitude');
-      mgr        = "apt-get";
-      installcmd = "sudo apt-get install";
-      break;
-
-    case "macOS":
-      pkgs       = core.getInput('brew');
-      mgr        = "brew";
-      installcmd = "brew install";
+  for (let [mgr, info] of Object.entries(managers)) {
+    if (commandExists.sync(info.check)) {
+      pkgs = core.getInput(mgr);
       if (pkgs) {
-        child_process.execSync("brew update");
+        child_process.execSync(info.command + " " + pkgs)
       }
-      break;
-
-    default:
-      core.setFailed("Unsopported OS");
-  }
-
-  if (pkgs) {
-    child_process.execSync(installcmd + " " + pkgs);
+    }
   }
 
 } catch (error) {

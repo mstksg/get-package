@@ -1,11 +1,6 @@
 name: 'Get Package'
 description: 'Install packages from OS package manager'
 inputs:
-  runs-on:
-    description: |
-      Type of virtual machine to run on.  Should be one of the valid inputs
-      for jobs.<job id>.runs-on
-    required: true
   brew:
     description: |
       Space-separated list of packages to install using brew install.  Will
