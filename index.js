@@ -5,19 +5,22 @@ const fs = require('fs');
 
 try {
   ro = core.getInput('runs-on').split("-")[0];
+  var pkgs;
+  var mgr;
+  var installcmd;
 
   switch(ro) {
 
     case "ubuntu":
-      const pkgs       = core.getInput('aptitude');
-      const mgr        = "apt-get";
-      const installcmd = "sudo apt-get install";
+      pkgs       = core.getInput('aptitude');
+      mgr        = "apt-get";
+      installcmd = "sudo apt-get install";
       break;
 
     case "macOS":
-      const pkgs       = core.getInput('brew');
-      const mgr        = "brew";
-      const installcmd = "brew install";
+      pkgs       = core.getInput('brew');
+      mgr        = "brew";
+      installcmd = "brew install";
       if (pkgs) {
         child_process.execSync("brew update");
       }
