@@ -9,7 +9,6 @@ try {
   switch(ro) {
 
     case "ubuntu":
-
       const pkgs       = core.getInput('aptitude');
       const mgr        = "apt-get";
       const installcmd = "sudo apt-get install";
