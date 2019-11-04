@@ -19,10 +19,6 @@ try {
 
   var pkgs;
 
-  for (var x in core.getInput("testlist")) {
-    core.debug(x);
-  }
-
   for (let [mgr, info] of Object.entries(managers)) {
     if (commandExists.sync(info.check)) {
       pkgs = core.getInput(mgr);
