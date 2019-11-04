@@ -1,5 +1,6 @@
 name: 'Get Package'
 description: 'Install packages from OS package manager'
+author: Justin Le
 inputs:
   brew:
     description: |
@@ -11,6 +12,9 @@ inputs:
       Space-separated list of packages to install using apt-get.  Will
       only run if on ubuntu.
     required: false
+branding:
+  icon: arrow-down
+  color: white
 runs:
   using: 'node12'
   main: 'index.js'
