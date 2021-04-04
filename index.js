@@ -7,7 +7,7 @@ const commandExists = require('command-exists');
 const managers = {
   "apt-get": {
       "check": "apt-get",
-      "command": "sudo apt-get update && sudo apt-get install"
+      "command": "sudo apt-get update && sudo apt-get -y install"
     },
   "brew": {
       "check": "brew",
