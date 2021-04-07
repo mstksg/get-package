@@ -7,7 +7,7 @@ const managers = {
   "apt-get": {
     "check": "apt-get",
     "platform": "linux",
-    "command": "sudo apt-get update && sudo apt-get -y install"
+    "command": "sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install"
   },
   "brew": {
     "check": "brew",
@@ -17,7 +17,7 @@ const managers = {
   "snap": {
     "check": "apt-get",
     "platform": "linux",
-    "command": "sudo apt-get update && sudo apt-get -y install snap && sudo snap install"
+    "command": "sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install snap && sudo snap install"
   },
   "linuxbrew": {
     "check": "brew",
