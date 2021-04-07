@@ -4,13 +4,23 @@ author: Justin Le
 inputs:
   brew:
     description: |
-      Space-separated list of packages to install using brew install.  Will
+      Space-separated list of packages to install using brew install. Will
       only run if on OSX.
     required: false
   apt-get:
     description: |
-      Space-separated list of packages to install using apt-get.  Will
-      only run if on ubuntu.
+      Space-separated list of packages to install using apt-get. Will
+      only run if on linux.
+    required: false
+  snap:
+    description: |
+      Space-separated list of packages to install using snap. Will
+      only run if on linux.
+    required: false
+  linuxbrew:
+    description: |
+      Space-separated list of packages to install using brew on linux. Will
+      only run if on linux.
     required: false
 branding:
   icon: arrow-down
