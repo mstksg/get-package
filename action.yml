@@ -1,6 +1,6 @@
 name: 'Get Package'
 description: 'Install packages from OS package manager'
-author: Justin Le
+author: Wessel van Norel
 inputs:
   brew:
     description: |

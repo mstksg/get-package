@@ -15,9 +15,9 @@ const managers = {
     "command": "brew update && brew install"
   },
   "snap": {
-    "check": "snap",
+    "check": "apt-get",
     "platform": "linux",
-    "command": "sudo snap install"
+    "command": "sudo apt-get update && sudo apt-get -y install snap && sudo snap install"
   },
   "linuxbrew": {
     "check": "brew",

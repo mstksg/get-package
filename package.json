@@ -1,6 +1,6 @@
 {
   "name": "get-package",
-  "version": "4.0.0",
+  "version": "5.0.1",
   "description": "github action for setting up package from OS package managers",
   "dependencies": {
     "@actions/core": "1.2.6",
@@ -19,7 +19,9 @@
     "actions",
     "aptitude",
     "apt-get",
-    "brew"
+    "brew",
+    "snap",
+    "linuxbrew"
   ],
   "author": "delgurth",
   "license": "ISC"

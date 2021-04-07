@@ -6,7 +6,7 @@ Download and install packages using OS package manager
 Usage:
 
 ```yaml
-use: delgurth/get-package@v4
+use: delgurth/get-package@v5.0.1
 with:
   brew: brewdep1 brewdep2
   apt-get: aptdep1 aptdep2
