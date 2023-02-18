@@ -15,17 +15,17 @@ inputs:
   snap:
     description: |
       Space-separated list of packages to install using snap. Will
-      only run if on linux.
+      only run if on linux. Will only work if snap is installed.
     required: false
   linuxbrew:
     description: |
       Space-separated list of packages to install using brew on linux. Will
-      only run if on linux.
+      only run if on linux. Will only work if brew is installed.
     required: false
 branding:
   icon: arrow-down
   color: white
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
 

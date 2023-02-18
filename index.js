@@ -1,28 +1,28 @@
 const os = require('os')
 const core = require('@actions/core');
+const which = require('which')
 const child_process = require('child_process');
-const commandExists = require('command-exists');
 
 const managers = {
   "apt-get": {
     "check": "apt-get",
     "platform": "linux",
-    "command": "sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install"
+    "command": ">&2 echo 'apt-get' && sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install"
   },
   "brew": {
     "check": "brew",
     "platform": "darwin",
-    "command": "brew update && brew install"
+    "command": ">&2 echo 'brew' && brew update && brew install"
   },
   "snap": {
-    "check": "apt-get",
+    "check": "snap",
     "platform": "linux",
-    "command": "sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install snap && sudo snap install"
+    "command": ">&2 echo 'snap' && sudo snap install"
   },
   "linuxbrew": {
     "check": "brew",
     "platform": "linux",
-    "command": "brew update && brew install"
+    "command": ">&2 echo 'linuxbrew' && export HOMEBREW_NO_INSTALL_FROM_API=1 && brew update && brew install"
   }
 };
 
@@ -31,10 +31,15 @@ try {
   let pkgs;
 
   for (let [mgr, info] of Object.entries(managers)) {
-    if (commandExists.sync(info.check) && os.platform() === info.platform) {
+    const resolvedOrNull = which.sync(info.check, { nothrow: true })
+    if (resolvedOrNull !== null && os.platform() === info.platform) {
       pkgs = core.getInput(mgr);
       if (pkgs) {
         child_process.execSync(info.command + " " + pkgs)
+      }
+    } else {
+      if (os.platform() === info.platform) {
+        console.error("did not find command " + mgr);
       }
     }
   }
