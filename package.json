@@ -1,11 +1,10 @@
 {
   "name": "get-package",
-  "version": "1.0.0",
+  "version": "6.0.0",
   "description": "github action for setting up package from OS package managers",
   "dependencies": {
-    "@actions/core": "1.2.0",
-    "@actions/github": "1.1.0",
-    "command-exists": "1.2.8"
+    "@actions/core": "1.10.0",
+    "which": "3.0.0"
   },
   "main": "index.js",
   "scripts": {
@@ -13,15 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/mstksg/get-package.git"
+    "url": "git@github.com/delgurth/get-package.git"
   },
   "keywords": [
     "github",
     "actions",
     "aptitude",
     "apt-get",
-    "brew"
+    "brew",
+    "snap",
+    "linuxbrew"
   ],
-  "author": "jle",
+  "author": "delgurth",
   "license": "ISC"
 }

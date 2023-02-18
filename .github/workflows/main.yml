@@ -1,0 +1,31 @@
+on: [push]
+
+jobs:
+  test-get-package:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'macOS-latest']
+    name: A job to test the working of get-package
+    env:
+      TERM: dumb
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Homebrew on linux
+        if: matrix.os == 'ubuntu-latest'
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Install packages
+        uses: ./
+        with:
+          apt-get: snap
+          brew: shfmt
+          snap: nmap
+          linuxbrew: shfmt
+      - name: Check if packages have been installed on macos
+        if: matrix.os == 'macOS-latest'
+        run: shfmt --version
+      - name: Check if packages have been installed on ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: shfmt --version && snap list | grep nmap
